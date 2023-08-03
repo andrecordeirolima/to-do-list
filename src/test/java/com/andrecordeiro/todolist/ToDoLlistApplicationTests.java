@@ -15,7 +15,9 @@ class ToDoLlistApplicationTests {
 	@Test
 	void testCreateTaskSuccess() {
 		var task = new Task("Tarefa 1", "Desc Tarefa1", false, 1);
-		webTestClient.post().uri("/tasks")
+		webTestClient
+				.post()
+				.uri("/tasks")
 				.bodyValue(task)
 				.exchange()
 				.expectStatus().isOk()
@@ -30,6 +32,14 @@ class ToDoLlistApplicationTests {
 
 	@Test
 	void testCreateTaskFailure() {
+
+		webTestClient
+				.post()
+				.uri("/tasks")
+				.bodyValue(
+						new Task("", "", false, 0)
+						).exchange()
+						.expectStatus().isBadRequest();
 
 	}
 

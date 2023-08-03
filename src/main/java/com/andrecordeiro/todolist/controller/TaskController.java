@@ -2,6 +2,7 @@ package com.andrecordeiro.todolist.controller;
 
 import com.andrecordeiro.todolist.entity.Task;
 import com.andrecordeiro.todolist.service.TaskService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public class TaskController {
 
 
     @PostMapping
-    List<Task> create(@RequestBody Task task){
+    List<Task> create(@RequestBody @Valid Task task){
         return taskService.create(task);
 
     }

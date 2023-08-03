@@ -1,6 +1,7 @@
 package com.andrecordeiro.todolist.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,7 +12,9 @@ public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank
     private String name;
+    @NotBlank
     private String description;
     private boolean finished;
     private int priority;
@@ -21,6 +24,9 @@ public class Task {
         this.description = description;
         this.finished = finished;
         this.priority = priority;
+    }
+
+    public Task() {
     }
 
     public Long getId() {
